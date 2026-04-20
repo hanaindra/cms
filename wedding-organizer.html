@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seraphina Wedding Organizer — Yogyakarta</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FAF6F0;
+  --warm-white: #FDFAF6;
+  --blush: #E8C4B8;
+  --blush-dark: #C9967F;
+  --rose: #A05C52;
+  --rose-deep: #7A3D35;
+  --gold: #C9A96E;
+  --gold-light: #E8D5B0;
+  --sage: #8A9E8C;
+  --text: #2C1F1A;
+  --text-muted: #7A6860;
+  --text-light: #B09A90;
+  --border: rgba(201,169,110,0.25);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Jost', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--warm-white);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%;
+  height: 72px;
+  background: rgba(253,250,246,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow .3s;
+}
+nav.scrolled { box-shadow: 0 2px 24px rgba(44,31,26,0.07); }
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  color: var(--rose-deep);
+  text-decoration: none;
+}
+.nav-logo span { font-style: italic; color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--rose); }
+.nav-cta {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border: 1px solid var(--gold);
+  color: var(--rose-deep);
+  text-decoration: none;
+  transition: all .2s;
+}
+.nav-cta:hover { background: var(--gold); color: var(--warm-white); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.nav-toggle span { display: block; width: 22px; height: 1.5px; background: var(--text); transition: all .3s; }
+.mobile-menu {
+  display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+  background: var(--warm-white); z-index: 99; padding: 3rem 5%;
+  flex-direction: column; gap: 2rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--serif); font-size: 28px; font-weight: 300;
+  color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+/* ===== SECTIONS ===== */
+section { display: none; }
+section.active { display: block; }
+
+/* ===== HERO ===== */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 100px 5% 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 70% 50%, rgba(232,196,184,0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,169,110,0.15) 0%, transparent 60%),
+    var(--cream);
+}
+.hero-ornament {
+  position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+  width: 42%; aspect-ratio: 3/4;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.hero-ornament-inner {
+  width: 100%; height: 100%;
+  background:
+    linear-gradient(135deg, rgba(232,196,184,0.6) 0%, rgba(201,169,110,0.3) 50%, rgba(138,158,140,0.2) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 80px; color: rgba(160,92,82,0.15);
+  font-style: italic;
+}
+.hero-content { position: relative; z-index: 1; max-width: 520px; }
+.hero-tag {
+  font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: .75rem;
+}
+.hero-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(46px, 6vw, 80px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--rose-deep);
+  margin-bottom: 1.5rem;
+}
+h1 em { font-style: italic; color: var(--rose); }
+.hero-desc {
+  font-size: 15px; color: var(--text-muted); line-height: 1.8;
+  margin-bottom: 2.5rem; max-width: 400px;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-block;
+  background: var(--rose);
+  color: var(--warm-white);
+  padding: 14px 32px;
+  font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+  text-decoration: none; transition: all .25s; border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--rose-deep); }
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--rose);
+  color: var(--rose);
+  padding: 14px 32px;
+  font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+  text-decoration: none; transition: all .25s; cursor: pointer; background: none;
+}
+.btn-outline:hover { background: var(--rose); color: var(--warm-white); }
+.hero-stats {
+  display: flex; gap: 2.5rem; margin-top: 3rem;
+  padding-top: 2rem; border-top: 1px solid var(--border);
+}
+.hero-stat-num {
+  font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--rose);
+}
+.hero-stat-label {
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-light);
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  padding: 140px 5% 60px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.page-header .tag {
+  font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.page-header h2 {
+  font-family: var(--serif); font-size: clamp(36px, 5vw, 60px);
+  font-weight: 300; color: var(--rose-deep); line-height: 1.2;
+}
+.page-header h2 em { font-style: italic; color: var(--rose); }
+.page-header p {
+  max-width: 520px; margin: 1rem auto 0;
+  color: var(--text-muted); font-size: 15px;
+}
+
+/* ===== SECTION STYLES ===== */
+.section-inner { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+.section-title {
+  font-family: var(--serif); font-size: clamp(28px, 4vw, 44px);
+  font-weight: 300; color: var(--rose-deep); margin-bottom: .5rem;
+}
+.section-title em { font-style: italic; }
+.section-sub {
+  font-size: 13px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 3rem;
+}
+.divider {
+  width: 48px; height: 1px; background: var(--gold);
+  margin: 1rem 0 2.5rem;
+}
+
+/* ===== TENTANG ===== */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5%;
+  align-items: center; margin-bottom: 5rem;
+}
+.about-img-frame {
+  aspect-ratio: 4/5; background:
+    linear-gradient(135deg, rgba(232,196,184,0.5), rgba(201,169,110,0.25));
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 100px; color: rgba(160,92,82,0.12);
+  font-style: italic; position: relative; overflow: hidden;
+}
+.about-img-frame::after {
+  content: ''; position: absolute; bottom: -20px; right: -20px;
+  width: 60%; height: 60%;
+  border: 1px solid var(--gold-light);
+}
+.about-text h3 {
+  font-family: var(--serif); font-size: 36px; font-weight: 300;
+  color: var(--rose-deep); margin-bottom: 1.5rem; line-height: 1.25;
+}
+.about-text h3 em { font-style: italic; }
+.about-text p { color: var(--text-muted); margin-bottom: 1.2rem; }
+.about-values {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  padding: 3rem 0; border-top: 1px solid var(--border);
+}
+.value-card { text-align: center; padding: 2rem 1rem; }
+.value-icon {
+  width: 48px; height: 48px; border: 1px solid var(--gold);
+  border-radius: 50%; margin: 0 auto 1rem;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 20px; color: var(--gold);
+}
+.value-card h4 {
+  font-family: var(--serif); font-size: 20px; font-weight: 400;
+  color: var(--rose-deep); margin-bottom: .5rem;
+}
+.value-card p { font-size: 13px; color: var(--text-muted); }
+.team-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  margin-top: 3rem;
+}
+.team-card { text-align: center; }
+.team-photo {
+  aspect-ratio: 1; background: linear-gradient(135deg, var(--blush), var(--gold-light));
+  margin-bottom: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 48px; color: rgba(160,92,82,0.3);
+}
+.team-card h4 { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--rose-deep); }
+.team-card p { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); }
+
+/* ===== LAYANAN ===== */
+.layanan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.layanan-card {
+  border: 1px solid var(--border); padding: 2.5rem 2rem;
+  transition: all .3s; cursor: pointer; background: var(--warm-white);
+}
+.layanan-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(160,92,82,0.1);
+}
+.layanan-icon {
+  font-family: var(--serif); font-size: 36px; font-style: italic;
+  color: var(--gold); margin-bottom: 1.5rem; line-height: 1;
+}
+.layanan-card h3 {
+  font-family: var(--serif); font-size: 24px; font-weight: 400;
+  color: var(--rose-deep); margin-bottom: .75rem;
+}
+.layanan-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; }
+.layanan-list { list-style: none; }
+.layanan-list li {
+  font-size: 13px; color: var(--text-muted); padding: 6px 0;
+  border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: .5rem;
+}
+.layanan-list li::before { content: '—'; color: var(--gold); font-size: 11px; }
+
+/* ===== PORTOFOLIO ===== */
+.galeri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.galeri-item {
+  aspect-ratio: 4/5; overflow: hidden; cursor: pointer; position: relative;
+}
+.galeri-item.tall { grid-row: span 2; aspect-ratio: auto; min-height: 400px; }
+.galeri-thumb {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--blush), rgba(201,169,110,0.4));
+  transition: transform .4s; display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 60px; color: rgba(160,92,82,0.15);
+}
+.galeri-item:hover .galeri-thumb { transform: scale(1.04); }
+.galeri-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(122,61,53,0.7) 0%, transparent 60%);
+  opacity: 0; transition: opacity .3s; display: flex; align-items: flex-end; padding: 1.5rem;
+}
+.galeri-item:hover .galeri-overlay { opacity: 1; }
+.galeri-label { font-family: var(--serif); font-size: 18px; color: var(--warm-white); }
+
+.testimoni-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 5rem; }
+.testimoni-card {
+  padding: 2.5rem; border: 1px solid var(--border); background: var(--cream);
+  position: relative;
+}
+.testimoni-card::before {
+  content: '"'; position: absolute; top: 1rem; left: 1.5rem;
+  font-family: var(--serif); font-size: 80px; color: var(--gold-light);
+  line-height: 1;
+}
+.testimoni-text {
+  font-family: var(--serif); font-size: 18px; font-style: italic;
+  color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem;
+  padding-top: 1.5rem;
+}
+.testimoni-author { font-size: 13px; font-weight: 500; color: var(--rose); letter-spacing: .05em; }
+.testimoni-date { font-size: 12px; color: var(--text-light); }
+
+/* ===== PAKET ===== */
+.paket-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.paket-card {
+  border: 1px solid var(--border); padding: 3rem 2rem 2.5rem;
+  text-align: center; transition: all .3s; position: relative; background: var(--warm-white);
+}
+.paket-card.featured {
+  border-color: var(--gold); background: var(--cream);
+  box-shadow: 0 8px 40px rgba(160,92,82,0.12);
+}
+.paket-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--gold); color: var(--warm-white);
+  font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+  padding: 5px 16px;
+}
+.paket-name {
+  font-family: var(--serif); font-size: 12px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .75rem;
+}
+.paket-price {
+  font-family: var(--serif); font-size: 42px; font-weight: 300; color: var(--rose-deep);
+  line-height: 1; margin-bottom: .5rem;
+}
+.paket-price sub { font-size: 16px; color: var(--text-muted); }
+.paket-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+.paket-features { list-style: none; margin-bottom: 2rem; text-align: left; }
+.paket-features li {
+  font-size: 13px; color: var(--text-muted); padding: 8px 0;
+  border-bottom: 1px solid rgba(201,169,110,0.15);
+  display: flex; gap: .75rem; align-items: flex-start;
+}
+.paket-features li::before { content: '✓'; color: var(--sage); font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+
+/* ===== BLOG ===== */
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.blog-card { cursor: pointer; }
+.blog-thumb {
+  aspect-ratio: 4/3; overflow: hidden; margin-bottom: 1.25rem;
+  background: linear-gradient(135deg, var(--blush), var(--gold-light));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 48px; color: rgba(160,92,82,0.15);
+  transition: transform .3s;
+}
+.blog-card:hover .blog-thumb { transform: scale(1.02); }
+.blog-cat {
+  font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .5rem;
+}
+.blog-card h3 {
+  font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--rose-deep);
+  margin-bottom: .5rem; line-height: 1.3;
+}
+.blog-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: .75rem; }
+.blog-meta { font-size: 12px; color: var(--text-light); display: flex; gap: 1rem; }
+
+/* Blog Detail */
+.blog-detail { padding: 120px 5% 80px; max-width: 720px; margin: 0 auto; }
+.blog-detail-back {
+  font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold);
+  cursor: pointer; margin-bottom: 2rem; display: flex; align-items: center; gap: .5rem;
+}
+.blog-detail-back:hover { color: var(--rose); }
+.blog-detail h1 {
+  font-family: var(--serif); font-size: clamp(30px, 5vw, 48px); font-weight: 300;
+  color: var(--rose-deep); line-height: 1.2; margin-bottom: 1rem;
+}
+.blog-detail-meta { font-size: 13px; color: var(--text-light); margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+.blog-detail-body p { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.85; }
+.blog-detail-body h2 { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--rose-deep); margin: 2.5rem 0 1rem; }
+
+/* ===== KONTAK ===== */
+.kontak-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5%; align-items: start; }
+.kontak-info h3 { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--rose-deep); margin-bottom: 1rem; }
+.kontak-info h3 em { font-style: italic; }
+.kontak-info p { color: var(--text-muted); margin-bottom: 2rem; }
+.kontak-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
+.kontak-item-icon {
+  width: 40px; height: 40px; border: 1px solid var(--gold); border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 16px;
+}
+.kontak-item-text strong { display: block; font-weight: 500; font-size: 13px; color: var(--text); margin-bottom: .2rem; }
+.kontak-item-text span { font-size: 13px; color: var(--text-muted); }
+.kontak-form { background: var(--cream); padding: 2.5rem; border: 1px solid var(--border); }
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: .5rem; }
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%; padding: 12px 16px;
+  border: 1px solid var(--border); background: var(--warm-white);
+  font-family: var(--sans); font-size: 14px; color: var(--text);
+  outline: none; transition: border-color .2s; resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { border-color: var(--gold); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-success {
+  display: none; background: rgba(138,158,140,0.1); border: 1px solid var(--sage);
+  padding: 1rem; font-size: 14px; color: var(--sage); margin-top: 1rem;
+}
+.wa-btn {
+  display: flex; align-items: center; gap: .75rem; margin-top: 2.5rem;
+  padding: 1rem 1.5rem; background: #25D366; color: white;
+  font-size: 13px; font-weight: 500; cursor: pointer; border: none;
+  text-decoration: none; width: fit-content;
+}
+.wa-btn:hover { background: #1da851; }
+.jam-item { display: flex; justify-content: space-between; padding: .75rem 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.jam-item span:first-child { color: var(--text-muted); }
+.jam-item span:last-child { font-weight: 500; color: var(--rose); }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--rose-deep); color: rgba(255,255,255,0.7);
+  padding: 5rem 5% 2rem;
+}
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand .logo {
+  font-family: var(--serif); font-size: 22px; color: var(--warm-white); margin-bottom: 1rem;
+}
+.footer-brand .logo span { font-style: italic; color: var(--gold); }
+.footer-brand p { font-size: 13px; line-height: 1.7; margin-bottom: 1.5rem; }
+.footer-socials { display: flex; gap: .75rem; }
+.social-link {
+  width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: rgba(255,255,255,0.7); text-decoration: none; cursor: pointer;
+  transition: all .2s;
+}
+.social-link:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col h4 {
+  font-size: 11px; font-weight: 500; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--warm-white); margin-bottom: 1.25rem;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: .6rem; }
+.footer-links a {
+  font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; cursor: pointer;
+  transition: color .2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom {
+  padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-bottom p { font-size: 12px; }
+.footer-legal { display: flex; gap: 1.5rem; }
+.footer-legal a { font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; cursor: pointer; }
+.footer-legal a:hover { color: var(--gold); }
+
+/* ===== ENTRY ANIMATION ===== */
+.fade-up {
+  opacity: 0; transform: translateY(24px);
+  animation: fadeUp .6s ease forwards;
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: none; }
+}
+.delay-1 { animation-delay: .1s; }
+.delay-2 { animation-delay: .2s; }
+.delay-3 { animation-delay: .3s; }
+.delay-4 { animation-delay: .4s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+  .hero-ornament { display: none; }
+  .about-grid, .kontak-grid { grid-template-columns: 1fr; }
+  .layanan-grid, .paket-grid, .blog-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-values { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .galeri-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimoni-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .layanan-grid, .paket-grid, .blog-grid, .team-grid { grid-template-columns: 1fr; }
+  .galeri-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#" onclick="showSection('beranda')">Seraphina <span>Wedding</span></a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showSection('beranda')">Beranda</a></li>
+    <li><a href="#" onclick="showSection('tentang')">Tentang</a></li>
+    <li><a href="#" onclick="showSection('layanan')">Layanan</a></li>
+    <li><a href="#" onclick="showSection('portofolio')">Portofolio</a></li>
+    <li><a href="#" onclick="showSection('paket')">Paket</a></li>
+    <li><a href="#" onclick="showSection('blog')">Blog</a></li>
+    <li><a href="#" onclick="showSection('kontak')">Kontak</a></li>
+  </ul>
+  <a class="nav-cta" href="#" onclick="showSection('kontak')">Konsultasi Gratis</a>
+  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="showSection('beranda');toggleMenu()">Beranda</a>
+  <a href="#" onclick="showSection('tentang');toggleMenu()">Tentang Kami</a>
+  <a href="#" onclick="showSection('layanan');toggleMenu()">Layanan</a>
+  <a href="#" onclick="showSection('portofolio');toggleMenu()">Portofolio</a>
+  <a href="#" onclick="showSection('paket');toggleMenu()">Paket Harga</a>
+  <a href="#" onclick="showSection('blog');toggleMenu()">Blog</a>
+  <a href="#" onclick="showSection('kontak');toggleMenu()">Kontak</a>
+</div>
+
+<!-- ============================================================ -->
+<!-- BERANDA -->
+<!-- ============================================================ -->
+<section id="beranda" class="active">
+  <div id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-ornament">
+      <div class="hero-ornament-inner">♡</div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag fade-up">Wedding Organizer Yogyakarta</div>
+      <h1 class="fade-up delay-1">Hari Istimewa <em>yang Tak Terlupakan</em></h1>
+      <p class="hero-desc fade-up delay-2">Kami hadir untuk mengubah impian pernikahan Anda menjadi kenyataan yang indah — dengan sentuhan elegan, detail yang sempurna, dan momen yang abadi.</p>
+      <div class="hero-btns fade-up delay-3">
+        <button class="btn-primary" onclick="showSection('paket')">Lihat Paket</button>
+        <button class="btn-outline" onclick="showSection('portofolio')">Lihat Portofolio</button>
+      </div>
+      <div class="hero-stats fade-up delay-4">
+        <div>
+          <div class="hero-stat-num">500+</div>
+          <div class="hero-stat-label">Pasangan Bahagia</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">12+</div>
+          <div class="hero-stat-label">Tahun Pengalaman</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">98%</div>
+          <div class="hero-stat-label">Kepuasan Klien</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profil Singkat -->
+  <div style="background: var(--cream); padding: 5rem 5%; border-top: 1px solid var(--border);">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 5%; align-items: center;">
+      <div>
+        <div class="section-sub">Tentang Kami</div>
+        <h2 class="section-title">Menghadirkan <em>Keindahan</em> di Setiap Momen</h2>
+        <div class="divider"></div>
+      </div>
+      <div>
+        <p style="color: var(--text-muted); line-height: 1.85; margin-bottom: 1.25rem;">Seraphina Wedding Organizer berdiri sejak 2012 di Yogyakarta, dengan komitmen penuh untuk mewujudkan pernikahan impian setiap pasangan. Kami memahami bahwa setiap cinta memiliki ceritanya sendiri.</p>
+        <p style="color: var(--text-muted); line-height: 1.85; margin-bottom: 1.5rem;">Dengan tim profesional berpengalaman, kami menangani setiap detail — dari dekorasi, katering, hingga dokumentasi — agar Anda bisa menikmati hari istimewa tanpa kekhawatiran.</p>
+        <button class="btn-outline" onclick="showSection('tentang')">Pelajari Lebih Lanjut</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Layanan Unggulan -->
+  <div style="padding: 5rem 5%;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <div class="section-sub">Layanan Kami</div>
+        <h2 class="section-title">Layanan <em>Unggulan</em></h2>
+      </div>
+      <div class="layanan-grid">
+        <div class="layanan-card" onclick="showSection('layanan')">
+          <div class="layanan-icon">♡</div>
+          <h3>Dekorasi & Venue</h3>
+          <p>Dekorasi eksklusif yang disesuaikan dengan tema dan impian Anda, dari konsep modern hingga tradisional Jawa.</p>
+        </div>
+        <div class="layanan-card" onclick="showSection('layanan')">
+          <div class="layanan-icon">◈</div>
+          <h3>Katering & Menu</h3>
+          <p>Hidangan lezat dengan presentasi memukau untuk memanjakan selera tamu undangan Anda.</p>
+        </div>
+        <div class="layanan-card" onclick="showSection('layanan')">
+          <div class="layanan-icon">◎</div>
+          <h3>Foto & Video</h3>
+          <p>Dokumentasi profesional yang mengabadikan setiap momen berharga pernikahan Anda selamanya.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TENTANG KAMI -->
+<!-- ============================================================ -->
+<section id="tentang">
+  <div class="page-header">
+    <div class="tag">Tentang Kami</div>
+    <h2>Kisah di Balik <em>Setiap Pernikahan</em></h2>
+    <p>Kami adalah tim yang berdedikasi untuk mewujudkan hari paling istimewa dalam hidup Anda.</p>
+  </div>
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img-frame">♡</div>
+      <div class="about-text">
+        <h3>Visi & <em>Misi</em> Kami</h3>
+        <p><strong style="color:var(--rose)">Visi:</strong> Menjadi wedding organizer terpercaya di Yogyakarta yang dikenal karena keindahan, keeleganan, dan profesionalisme dalam setiap pernikahan yang kami tangani.</p>
+        <p><strong style="color:var(--rose)">Misi:</strong> Kami berkomitmen untuk memahami setiap impian pasangan dan mewujudkannya dengan detail yang sempurna, pelayanan yang tulus, dan kreativitas tanpa batas.</p>
+        <p>Berdiri sejak 2012, Seraphina Wedding Organizer telah menangani lebih dari 500 pernikahan di Yogyakarta, Solo, dan sekitarnya. Setiap pernikahan kami perlakukan sebagai karya seni tersendiri.</p>
+        <div style="margin-top:2rem;">
+          <button class="btn-primary" onclick="showSection('kontak')">Hubungi Kami</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-values">
+      <div class="value-card">
+        <div class="value-icon">♡</div>
+        <h4>Penuh Kasih</h4>
+        <p>Setiap pernikahan kami tangani dengan sepenuh hati dan dedikasi penuh.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">◈</div>
+        <h4>Profesional</h4>
+        <p>Tim kami terlatih dan berpengalaman untuk memastikan segala hal berjalan sempurna.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">◎</div>
+        <h4>Kreatif</h4>
+        <p>Kami selalu menghadirkan ide-ide segar dan konsep unik untuk setiap pasangan.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 4rem;">
+      <div class="section-sub">Tim Kami</div>
+      <h2 class="section-title">Orang-orang <em>Berdedikasi</em> di Balik Layar</h2>
+      <div class="divider"></div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-photo">S</div>
+          <h4>Sarah Andini</h4>
+          <p>Founder & Lead Organizer</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">R</div>
+          <h4>Rizky Pratama</h4>
+          <p>Creative Director</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">A</div>
+          <h4>Anisa Dewi</h4>
+          <p>Venue & Decoration Specialist</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- LAYANAN -->
+<!-- ============================================================ -->
+<section id="layanan">
+  <div class="page-header">
+    <div class="tag">Layanan Kami</div>
+    <h2>Semua yang Anda Butuhkan <em>Ada di Sini</em></h2>
+    <p>Kami menyediakan layanan lengkap untuk memastikan pernikahan Anda berjalan sempurna dari awal hingga akhir.</p>
+  </div>
+  <div class="section-inner">
+    <div class="layanan-grid">
+      <div class="layanan-card">
+        <div class="layanan-icon">♡</div>
+        <h3>Dekorasi & Venue</h3>
+        <p>Transformasi ruangan menjadi surga pernikahan impian Anda dengan sentuhan tangan ahli kami.</p>
+        <ul class="layanan-list">
+          <li>Konsultasi tema & konsep dekorasi</li>
+          <li>Backdrop & arch arrangement</li>
+          <li>Floral design & centerpieces</li>
+          <li>Lighting artistik</li>
+          <li>Venue styling & dressing</li>
+        </ul>
+      </div>
+      <div class="layanan-card">
+        <div class="layanan-icon">◈</div>
+        <h3>Katering & Menu</h3>
+        <p>Sajian kuliner berkelas dengan presentasi memukau yang menjadi kenangan tersendiri bagi tamu undangan.</p>
+        <ul class="layanan-list">
+          <li>Konsultasi menu & food tasting</li>
+          <li>Multi-cuisine options</li>
+          <li>Live cooking station</li>
+          <li>Desain wedding cake</li>
+          <li>Prasmanan & plated service</li>
+        </ul>
+      </div>
+      <div class="layanan-card">
+        <div class="layanan-icon">◎</div>
+        <h3>Foto & Video</h3>
+        <p>Abadikan setiap momen berharga dengan dokumentasi profesional berkualitas sinematik.</p>
+        <ul class="layanan-list">
+          <li>Pre-wedding photoshoot</li>
+          <li>Wedding day photography</li>
+          <li>Videografi sinematik</li>
+          <li>Drone aerial footage</li>
+          <li>Same-day edit highlight</li>
+        </ul>
+      </div>
+      <div class="layanan-card">
+        <div class="layanan-icon">✦</div>
+        <h3>Entertainment</h3>
+        <p>Hibur tamu undangan dengan pilihan entertainment yang berkesan dan tak terlupakan.</p>
+        <ul class="layanan-list">
+          <li>Live band & musik</li>
+          <li>MC profesional bilingual</li>
+          <li>Tari tradisional Jawa</li>
+          <li>Photo booth & props</li>
+        </ul>
+      </div>
+      <div class="layanan-card">
+        <div class="layanan-icon">◇</div>
+        <h3>Undangan & Souvenir</h3>
+        <p>Kesan pertama yang tak terlupakan dimulai dari undangan yang elegan dan souvenir yang bermakna.</p>
+        <ul class="layanan-list">
+          <li>Desain undangan digital & cetak</li>
+          <li>Wedding website</li>
+          <li>Souvenir custom</li>
+          <li>Hampers & gift packaging</li>
+        </ul>
+      </div>
+      <div class="layanan-card">
+        <div class="layanan-icon">❋</div>
+        <h3>Koordinasi Hari H</h3>
+        <p>Tim koordinator berpengalaman siap memastikan semua berjalan sesuai rencana di hari istimewa Anda.</p>
+        <ul class="layanan-list">
+          <li>Rundown & timeline planning</li>
+          <li>Koordinator on-site</li>
+          <li>Vendor management</li>
+          <li>Emergency handling</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 4rem;">
+      <button class="btn-primary" onclick="showSection('paket')">Lihat Paket Harga</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PORTOFOLIO -->
+<!-- ============================================================ -->
+<section id="portofolio">
+  <div class="page-header">
+    <div class="tag">Portofolio</div>
+    <h2>Cerita Cinta yang <em>Telah Kami Tuliskan</em></h2>
+    <p>Setiap foto adalah kenangan yang kami bantu ciptakan untuk pasangan-pasangan bahagia kami.</p>
+  </div>
+  <div class="section-inner">
+    <div class="section-sub">Galeri Foto</div>
+    <h2 class="section-title">Momen <em>Berharga</em></h2>
+    <div class="divider"></div>
+    <div class="galeri-grid">
+      <div class="galeri-item tall">
+        <div class="galeri-thumb" style="background: linear-gradient(135deg,#E8C4B8,#C9A96E);">♡</div>
+        <div class="galeri-overlay"><span class="galeri-label">Reza & Intan — Jogja, 2024</span></div>
+      </div>
+      <div class="galeri-item">
+        <div class="galeri-thumb" style="background: linear-gradient(135deg,#C9A96E,#8A9E8C);">◈</div>
+        <div class="galeri-overlay"><span class="galeri-label">Budi & Sari — Solo, 2024</span></div>
+      </div>
+      <div class="galeri-item">
+        <div class="galeri-thumb" style="background: linear-gradient(135deg,#8A9E8C,#E8C4B8);">◎</div>
+        <div class="galeri-overlay"><span class="galeri-label">Dimas & Putri — Jogja, 2023</span></div>
+      </div>
+      <div class="galeri-item">
+        <div class="galeri-thumb" style="background: linear-gradient(135deg,#A05C52,#C9A96E);">✦</div>
+        <div class="galeri-overlay"><span class="galeri-label">Arif & Lestari — Jogja, 2023</span></div>
+      </div>
+      <div class="galeri-item tall">
+        <div class="galeri-thumb" style="background: linear-gradient(135deg,#E8D5B0,#A05C52);">♡</div>
+        <div class="galeri-overlay"><span class="galeri-label">Fajar & Mega — Semarang, 2023</span></div>
+      </div>
+      <div class="galeri-item">
+        <div class="galeri-thumb" style="background: linear-gradient(135deg,#C9967F,#8A9E8C);">◇</div>
+        <div class="galeri-overlay"><span class="galeri-label">Hendra & Wulan — Solo, 2022</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimoni -->
+  <div style="background: var(--cream); padding: 5rem 5%; border-top: 1px solid var(--border);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="section-sub">Testimoni</div>
+      <h2 class="section-title">Kata <em>Mereka</em></h2>
+      <div class="divider"></div>
+      <div class="testimoni-grid">
+        <div class="testimoni-card">
+          <p class="testimoni-text">Seraphina benar-benar membuat impian kami menjadi kenyataan. Setiap detail diperhatikan dengan sangat baik. Kami tidak perlu khawatir tentang apapun di hari H!</p>
+          <div class="testimoni-author">Reza & Intan</div>
+          <div class="testimoni-date">Pernikahan Desember 2024</div>
+        </div>
+        <div class="testimoni-card">
+          <p class="testimoni-text">Tim yang profesional dan penuh kasih. Dekorasi yang mereka buat sangat jauh melampaui ekspektasi kami. Tamu undangan banyak yang memuji keindahan venue.</p>
+          <div class="testimoni-author">Budi & Sari</div>
+          <div class="testimoni-date">Pernikahan Oktober 2024</div>
+        </div>
+        <div class="testimoni-card">
+          <p class="testimoni-text">Katering dari Seraphina sungguh luar biasa. Menu yang beragam dan lezat, presentasi yang cantik, dan pelayanan yang sangat ramah kepada semua tamu.</p>
+          <div class="testimoni-author">Dimas & Putri</div>
+          <div class="testimoni-date">Pernikahan Agustus 2023</div>
+        </div>
+        <div class="testimoni-card">
+          <p class="testimoni-text">Dokumentasi foto dan video kami luar biasa bagus! Sinematografi yang mereka buat seperti film Hollywood. Akan kami kenang seumur hidup.</p>
+          <div class="testimoni-author">Arif & Lestari</div>
+          <div class="testimoni-date">Pernikahan Juli 2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PAKET -->
+<!-- ============================================================ -->
+<section id="paket">
+  <div class="page-header">
+    <div class="tag">Paket Harga</div>
+    <h2>Pilih Paket yang <em>Paling Sesuai</em></h2>
+    <p>Investasi terbaik untuk hari paling istimewa dalam hidup Anda. Semua paket dapat dikustomisasi sesuai kebutuhan.</p>
+  </div>
+  <div class="section-inner">
+    <div class="paket-grid">
+      <div class="paket-card">
+        <div class="paket-name">Silver</div>
+        <div class="paket-price"><sub>Mulai </sub>15 Juta</div>
+        <p class="paket-desc">Paket dasar yang mencakup kebutuhan essensial pernikahan Anda dengan kualitas terjamin.</p>
+        <ul class="paket-features">
+          <li>Koordinator 1 hari</li>
+          <li>Dekorasi standar</li>
+          <li>Katering 100 pax</li>
+          <li>Foto (4 jam)</li>
+          <li>MC profesional</li>
+          <li>Undangan digital</li>
+        </ul>
+        <button class="btn-outline" style="width:100%" onclick="showSection('kontak')">Pilih Paket</button>
+      </div>
+      <div class="paket-card featured">
+        <div class="paket-badge">Paling Populer</div>
+        <div class="paket-name">Gold</div>
+        <div class="paket-price"><sub>Mulai </sub>30 Juta</div>
+        <p class="paket-desc">Paket komprehensif dengan layanan premium untuk pernikahan yang tak terlupakan.</p>
+        <ul class="paket-features">
+          <li>Koordinator 2 hari</li>
+          <li>Dekorasi premium + floral</li>
+          <li>Katering 200 pax</li>
+          <li>Foto & video (8 jam)</li>
+          <li>MC bilingual</li>
+          <li>Undangan cetak + digital</li>
+          <li>Live band 3 jam</li>
+          <li>Photo booth</li>
+        </ul>
+        <button class="btn-primary" style="width:100%" onclick="showSection('kontak')">Pilih Paket</button>
+      </div>
+      <div class="paket-card">
+        <div class="paket-name">Premium</div>
+        <div class="paket-price"><sub>Mulai </sub>60 Juta</div>
+        <p class="paket-desc">Pengalaman pernikahan mewah dengan layanan penuh dan personalisasi tak terbatas.</p>
+        <ul class="paket-features">
+          <li>Full coordination 3 hari</li>
+          <li>Dekorasi mewah + impor</li>
+          <li>Katering 500 pax</li>
+          <li>Foto & video sinematik</li>
+          <li>Drone aerial</li>
+          <li>Same-day edit</li>
+          <li>Live band full night</li>
+          <li>Souvenir custom</li>
+          <li>Honeymoon planning</li>
+        </ul>
+        <button class="btn-outline" style="width:100%" onclick="showSection('kontak')">Pilih Paket</button>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top: 2.5rem; color: var(--text-muted); font-size: 13px;">
+      * Harga belum termasuk venue. Semua paket dapat dikustomisasi. Hubungi kami untuk penawaran khusus.
+    </p>
+    <div style="background: var(--cream); border: 1px solid var(--border); padding: 2.5rem; margin-top: 4rem; text-align: center;">
+      <h3 style="font-family: var(--serif); font-size: 28px; color: var(--rose-deep); margin-bottom: .75rem;">Tidak Menemukan yang Sesuai?</h3>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Kami juga menawarkan paket custom yang dirancang khusus sesuai kebutuhan dan anggaran Anda.</p>
+      <button class="btn-primary" onclick="showSection('kontak')">Konsultasi Gratis</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- BLOG -->
+<!-- ============================================================ -->
+<section id="blog">
+  <div class="page-header">
+    <div class="tag">Blog & Inspirasi</div>
+    <h2>Tips & Inspirasi <em>Pernikahan</em></h2>
+    <p>Temukan ide, inspirasi, dan panduan praktis untuk pernikahan impian Anda.</p>
+  </div>
+  <div class="section-inner" id="blogList">
+    <div class="blog-grid">
+      <div class="blog-card" onclick="showBlogDetail(0)">
+        <div class="blog-thumb">♡</div>
+        <div class="blog-cat">Inspirasi Dekorasi</div>
+        <h3>10 Tema Pernikahan Paling Populer di 2025</h3>
+        <p>Dari konsep bohemian rustic hingga royal ballroom, temukan tema pernikahan yang paling pas untuk Anda.</p>
+        <div class="blog-meta"><span>15 Maret 2025</span><span>5 menit baca</span></div>
+      </div>
+      <div class="blog-card" onclick="showBlogDetail(1)">
+        <div class="blog-thumb">◈</div>
+        <div class="blog-cat">Tips Pernikahan</div>
+        <h3>Panduan Lengkap Menyusun Anggaran Pernikahan</h3>
+        <p>Cara cerdas mengalokasikan budget pernikahan agar semua kebutuhan terpenuhi tanpa over budget.</p>
+        <div class="blog-meta"><span>1 Maret 2025</span><span>7 menit baca</span></div>
+      </div>
+      <div class="blog-card" onclick="showBlogDetail(2)">
+        <div class="blog-thumb">◎</div>
+        <div class="blog-cat">Venue</div>
+        <h3>5 Venue Pernikahan Terbaik di Yogyakarta</h3>
+        <p>Rekomendasi venue pernikahan terbaik di Yogyakarta dengan berbagai pilihan kapasitas dan konsep.</p>
+        <div class="blog-meta"><span>20 Februari 2025</span><span>6 menit baca</span></div>
+      </div>
+      <div class="blog-card" onclick="showBlogDetail(3)">
+        <div class="blog-thumb">✦</div>
+        <div class="blog-cat">Gaun & Busana</div>
+        <h3>Tren Gaun Pengantin 2025: Minimalis & Elegan</h3>
+        <p>Koleksi gaun pengantin terkini yang memadukan estetika modern dengan sentuhan tradisional yang timeless.</p>
+        <div class="blog-meta"><span>10 Februari 2025</span><span>4 menit baca</span></div>
+      </div>
+      <div class="blog-card" onclick="showBlogDetail(4)">
+        <div class="blog-thumb">◇</div>
+        <div class="blog-cat">Katering</div>
+        <h3>Menu Pernikahan yang Disukai Semua Usia</h3>
+        <p>Panduan memilih menu katering pernikahan yang dapat memuaskan selera tamu dari berbagai kalangan.</p>
+        <div class="blog-meta"><span>28 Januari 2025</span><span>5 menit baca</span></div>
+      </div>
+      <div class="blog-card" onclick="showBlogDetail(5)">
+        <div class="blog-thumb">❋</div>
+        <div class="blog-cat">Tips Pernikahan</div>
+        <h3>Checklist 6 Bulan Sebelum Hari Pernikahan</h3>
+        <p>Daftar lengkap hal-hal yang perlu dipersiapkan 6 bulan sebelum hari H agar tidak ada yang terlewat.</p>
+        <div class="blog-meta"><span>15 Januari 2025</span><span>8 menit baca</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog Detail -->
+  <div id="blogDetail" style="display:none;">
+    <div class="blog-detail">
+      <div class="blog-detail-back" onclick="hideBlogDetail()">← Kembali ke Blog</div>
+      <div class="blog-cat" id="detailCat" style="margin-bottom:.5rem;"></div>
+      <h1 id="detailTitle"></h1>
+      <div class="blog-detail-meta" id="detailMeta"></div>
+      <div class="blog-detail-body" id="detailBody"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- KONTAK -->
+<!-- ============================================================ -->
+<section id="kontak">
+  <div class="page-header">
+    <div class="tag">Hubungi Kami</div>
+    <h2>Mari Mulai <em>Perjalanan Cinta</em> Anda</h2>
+    <p>Konsultasi gratis dengan tim kami untuk mulai merencanakan pernikahan impian Anda.</p>
+  </div>
+  <div class="section-inner">
+    <div class="kontak-grid">
+      <div class="kontak-info">
+        <h3>Senang <em>Mendengar</em> dari Anda</h3>
+        <p>Tim kami siap membantu Anda merencanakan pernikahan dari awal. Jangan ragu untuk menghubungi kami kapan saja.</p>
+
+        <div class="kontak-item">
+          <div class="kontak-item-icon">📍</div>
+          <div class="kontak-item-text">
+            <strong>Alamat</strong>
+            <span>Jl. Malioboro No. 88, Yogyakarta 55213</span>
+          </div>
+        </div>
+        <div class="kontak-item">
+          <div class="kontak-item-icon">📞</div>
+          <div class="kontak-item-text">
+            <strong>Telepon</strong>
+            <span>+62 274 555 8888</span>
+          </div>
+        </div>
+        <div class="kontak-item">
+          <div class="kontak-item-icon">✉</div>
+          <div class="kontak-item-text">
+            <strong>Email</strong>
+            <span>hello@seraphinawedding.id</span>
+          </div>
+        </div>
+
+        <a class="wa-btn" href="#">
+          <span style="font-size:18px;">💬</span>
+          Chat via WhatsApp
+        </a>
+
+        <div style="margin-top: 2.5rem;">
+          <h4 style="font-family: var(--serif); font-size: 20px; color: var(--rose-deep); margin-bottom: 1rem;">Jam Operasional</h4>
+          <div class="jam-item"><span>Senin – Jumat</span><span>09.00 – 18.00</span></div>
+          <div class="jam-item"><span>Sabtu</span><span>09.00 – 16.00</span></div>
+          <div class="jam-item"><span>Minggu</span><span>Konsultasi via WA</span></div>
+        </div>
+      </div>
+
+      <div class="kontak-form">
+        <h3 style="font-family: var(--serif); font-size: 24px; color: var(--rose-deep); margin-bottom: 1.5rem;">Kirim Pesan</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nama Calon Pengantin Pria</label>
+            <input type="text" placeholder="Nama lengkap">
+          </div>
+          <div class="form-group">
+            <label>Nama Calon Pengantin Wanita</label>
+            <input type="text" placeholder="Nama lengkap">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nomor WhatsApp</label>
+            <input type="tel" placeholder="+62 8xx xxxx xxxx">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="email@contoh.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tanggal Pernikahan</label>
+            <input type="date">
+          </div>
+          <div class="form-group">
+            <label>Paket yang Diminati</label>
+            <select>
+              <option value="">Pilih paket...</option>
+              <option>Silver — Mulai 15 Juta</option>
+              <option>Gold — Mulai 30 Juta</option>
+              <option>Premium — Mulai 60 Juta</option>
+              <option>Custom / Konsultasi Dulu</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Perkiraan Jumlah Tamu</label>
+          <select>
+            <option>50 – 100 tamu</option>
+            <option>100 – 200 tamu</option>
+            <option>200 – 500 tamu</option>
+            <option>500+ tamu</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Ceritakan Impian Pernikahan Anda</label>
+          <textarea rows="4" placeholder="Tema yang diinginkan, venue impian, hal spesial yang ingin diwujudkan..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%" onclick="submitForm()">Kirim Pesan</button>
+        <div class="form-success" id="formSuccess">
+          ✓ Pesan Anda telah terkirim! Tim kami akan menghubungi Anda dalam 1×24 jam.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">Seraphina <span>Wedding</span></div>
+      <p>Mewujudkan pernikahan impian Anda dengan sentuhan elegan dan penanganan penuh kasih sejak 2012 di Yogyakarta.</p>
+      <div class="footer-socials">
+        <a class="social-link">ig</a>
+        <a class="social-link">fb</a>
+        <a class="social-link">yt</a>
+        <a class="social-link">tt</a>
+        <a class="social-link">pt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigasi</h4>
+      <ul class="footer-links">
+        <li><a onclick="showSection('beranda')">Beranda</a></li>
+        <li><a onclick="showSection('tentang')">Tentang Kami</a></li>
+        <li><a onclick="showSection('layanan')">Layanan</a></li>
+        <li><a onclick="showSection('portofolio')">Portofolio</a></li>
+        <li><a onclick="showSection('paket')">Paket Harga</a></li>
+        <li><a onclick="showSection('blog')">Blog</a></li>
+        <li><a onclick="showSection('kontak')">Kontak</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Layanan</h4>
+      <ul class="footer-links">
+        <li><a>Dekorasi & Venue</a></li>
+        <li><a>Katering & Menu</a></li>
+        <li><a>Foto & Video</a></li>
+        <li><a>Entertainment</a></li>
+        <li><a>Undangan & Souvenir</a></li>
+        <li><a>Koordinasi Hari H</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontak</h4>
+      <ul class="footer-links">
+        <li><a>📍 Jl. Malioboro 88, Jogja</a></li>
+        <li><a>📞 +62 274 555 8888</a></li>
+        <li><a>✉ hello@seraphinawedding.id</a></li>
+        <li><a>⏰ Senin–Sabtu, 09–18</a></li>
+      </ul>
+      <div style="margin-top:1.5rem; font-size:13px; color:rgba(255,255,255,0.5);">
+        Area Layanan:<br>Yogyakarta · Solo · Semarang
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Seraphina Wedding Organizer. All rights reserved.</p>
+    <div class="footer-legal">
+      <a>Kebijakan Privasi</a>
+      <a>Syarat & Ketentuan</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const blogData = [
+  {
+    cat: 'Inspirasi Dekorasi', title: '10 Tema Pernikahan Paling Populer di 2025',
+    meta: '15 Maret 2025 · 5 menit baca · oleh Tim Seraphina',
+    body: `<p>Memilih tema pernikahan adalah salah satu keputusan paling menyenangkan sekaligus menantang. Tema yang tepat akan mencerminkan kepribadian Anda berdua dan menciptakan atmosfer yang tak terlupakan.</p>
+<h2>1. Bohemian Rustic</h2>
+<p>Tema ini menggabungkan keindahan alam dengan sentuhan bohemian yang bebas dan hangat. Elemen seperti kayu, rattan, bunga-bunga liar, dan kain macrame menjadi ciri khasnya. Sangat cocok untuk pernikahan outdoor di kebun atau peternakan.</p>
+<h2>2. Modern Minimalist</h2>
+<p>Kesederhanaan adalah kemewahan tertinggi. Tema minimalis modern mengedepankan garis bersih, palet warna netral (putih, krem, abu), dan dekorasi yang tidak berlebihan namun tetap elegan. Setiap elemen dipilih dengan teliti.</p>
+<h2>3. Royal Javanese</h2>
+<p>Kekayaan budaya Jawa diekspresikan melalui batik, ukiran, dan ornamen tradisional yang megah. Pilihan yang tepat untuk pasangan yang ingin merayakan warisan budaya dengan cara yang anggun dan mewah.</p>
+<p>Dan masih banyak tema lainnya yang bisa Anda eksplorasi bersama tim kreatif kami. Konsultasikan impian Anda dan kami akan membantu mewujudkannya!</p>`
+  },
+  {
+    cat: 'Tips Pernikahan', title: 'Panduan Lengkap Menyusun Anggaran Pernikahan',
+    meta: '1 Maret 2025 · 7 menit baca · oleh Sarah Andini',
+    body: `<p>Merencanakan anggaran pernikahan bisa terasa overwhelming, tapi dengan pendekatan yang sistematis, Anda bisa mendapatkan pernikahan impian tanpa stres finansial.</p>
+<h2>Prioritaskan Berdasarkan Kepentingan</h2>
+<p>Tentukan 3 hal yang paling penting bagi Anda. Apakah foto dan video? Dekorasi? Atau katering? Alokasikan budget lebih besar untuk prioritas utama ini, dan cari cara hemat untuk yang lain.</p>
+<h2>Distribusi Anggaran yang Disarankan</h2>
+<p>Katering biasanya menyerap 35-40% total anggaran. Dekorasi dan venue sekitar 25-30%. Dokumentasi 15-20%. Busana 10-15%. Sisanya untuk berbagai keperluan lain dan dana darurat.</p>
+<h2>Selalu Siapkan Dana Cadangan</h2>
+<p>Selalu sisihkan 10-15% dari total anggaran sebagai dana cadangan. Pernikahan hampir selalu memiliki pengeluaran tak terduga, dan lebih baik siap daripada panik di detik terakhir.</p>`
+  },
+  {
+    cat: 'Venue', title: '5 Venue Pernikahan Terbaik di Yogyakarta',
+    meta: '20 Februari 2025 · 6 menit baca · oleh Rizky Pratama',
+    body: `<p>Yogyakarta menawarkan beragam pilihan venue pernikahan yang indah, dari gedung bersejarah hingga taman tropis yang asri. Berikut rekomendasi terbaik kami.</p>
+<h2>1. Kraton Yogyakarta</h2>
+<p>Untuk pernikahan adat Jawa yang autentik, tiada yang lebih prestisius dari lingkungan Kraton. Nuansa budaya yang kental dan arsitektur bersejarah menciptakan latar belakang yang tak tertandingi.</p>
+<h2>2. Plataran Borobudur</h2>
+<p>Dengan pemandangan Candi Borobudur sebagai backdrop, venue ini menawarkan pengalaman pernikahan yang sungguh extraordinary. Tersedia kapasitas hingga 500 tamu dengan berbagai paket.</p>
+<h2>3. The Royal Ambarrukmo</h2>
+<p>Hotel bintang lima dengan ballroom mewah dan taman yang asri. Pilihan sempurna untuk pernikahan indoor maupun outdoor dengan pelayanan kelas dunia.</p>
+<p>Hubungi kami untuk mendapatkan rekomendasi venue yang paling sesuai dengan konsep dan budget pernikahan Anda.</p>`
+  },
+  {
+    cat: 'Gaun & Busana', title: 'Tren Gaun Pengantin 2025: Minimalis & Elegan',
+    meta: '10 Februari 2025 · 4 menit baca · oleh Anisa Dewi',
+    body: `<p>Tren gaun pengantin 2025 bergerak ke arah yang lebih personal, sustainable, dan timeless. Forget the over-the-top — kesederhanaan yang elegan kini menjadi raja.</p>
+<h2>Minimalist Elegance</h2>
+<p>Gaun dengan siluet bersih, bahan berkualitas tinggi, dan detail yang subtle. Less is more — satu aksen yang tepat lebih berkesan daripada banyak ornamen.</p>
+<h2>Sustainable & Ethical Fashion</h2>
+<p>Semakin banyak pengantin yang memilih gaun dari desainer lokal dengan bahan ramah lingkungan. Selain bangga menggunakan produk dalam negeri, ini juga berkontribusi pada industri fashion yang lebih berkelanjutan.</p>`
+  },
+  {
+    cat: 'Katering', title: 'Menu Pernikahan yang Disukai Semua Usia',
+    meta: '28 Januari 2025 · 5 menit baca · oleh Tim Seraphina',
+    body: `<p>Salah satu tantangan terbesar dalam pernikahan adalah memilih menu yang bisa memuaskan semua tamu — dari kakek-nenek hingga anak-anak, dari yang suka pedas hingga yang vegetarian.</p>
+<h2>Strategi Menu yang Inklusif</h2>
+<p>Kuncinya adalah variasi. Selalu sediakan pilihan vegetarian/vegan, opsi halal yang jelas, dan level kepedasan yang berbeda. Buffet-style biasanya lebih fleksibel dibanding plated untuk pernikahan besar.</p>
+<h2>Hidangan Wajib yang Selalu Disukai</h2>
+<p>Nasi gudeg dan pendampingnya selalu menjadi favorit di Yogyakarta. Tambahkan soto, bakmi jawa, dan aneka gorengan sebagai station makanan ringan yang bisa dinikmati kapan saja.</p>`
+  },
+  {
+    cat: 'Tips Pernikahan', title: 'Checklist 6 Bulan Sebelum Hari Pernikahan',
+    meta: '15 Januari 2025 · 8 menit baca · oleh Sarah Andini',
+    body: `<p>Pernikahan yang sempurna adalah hasil dari perencanaan yang matang. Mulai dari 6 bulan sebelumnya agar semua bisa berjalan dengan tenang dan menyenangkan.</p>
+<h2>6 Bulan Sebelumnya</h2>
+<p>Tentukan tanggal dan venue. Booking wedding organizer dan vendor utama (foto, katering). Tentukan anggaran keseluruhan. Buat daftar tamu awal. Mulai cari inspirasi tema dan dekorasi.</p>
+<h2>4 Bulan Sebelumnya</h2>
+<p>Fitting gaun pengantin. Kirim save-the-date. Tentukan menu katering. Booking honeymoon. Rencanakan rundown acara bersama WO Anda.</p>
+<h2>2 Bulan Sebelumnya</h2>
+<p>Cetak dan kirim undangan. Final fitting. Konfirmasi semua vendor. Buat seating arrangement. Siapkan detail-detail kecil seperti favors dan dekorasi meja.</p>
+<p>Dengan checklist yang terorganisir, Anda bisa menikmati proses persiapan tanpa stres berlebihan!</p>`
+  }
+];
+
+function showSection(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // reset blog detail
+  if (id === 'blog') {
+    document.getElementById('blogList').style.display = '';
+    document.getElementById('blogDetail').style.display = 'none';
+  }
+}
+
+function showBlogDetail(idx) {
+  const d = blogData[idx];
+  document.getElementById('detailCat').textContent = d.cat;
+  document.getElementById('detailTitle').textContent = d.title;
+  document.getElementById('detailMeta').textContent = d.meta;
+  document.getElementById('detailBody').innerHTML = d.body;
+  document.getElementById('blogList').style.display = 'none';
+  document.getElementById('blogDetail').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function hideBlogDetail() {
+  document.getElementById('blogList').style.display = '';
+  document.getElementById('blogDetail').style.display = 'none';
+}
+
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+function submitForm() {
+  document.getElementById('formSuccess').style.display = 'block';
+  setTimeout(() => {
+    document.getElementById('formSuccess').style.display = 'none';
+  }, 5000);
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+</script>
+</body>
+</html>
